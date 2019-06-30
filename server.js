@@ -37,3 +37,10 @@ connection.connect(function(err){
   if (err) throw err;
   console.log("Connected to the database" +connection.threadId);
 })
+
+app.get("/", function(req, res){
+  connection.query("SELECT * FROM burgers_db;", function(err, data){
+res.render('index',{movies:data});
+  })
+
+})
