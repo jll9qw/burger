@@ -1,8 +1,10 @@
 // Dependencies
 const express = require("express");
 const exphbs = require("express-handlebars");
+// Set up MySQL connection.
+const mysql = require("mysql");
 const app = express();
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.PORT || 3000;
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
@@ -19,11 +21,12 @@ app.set("view engine", "handlebars");
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
-  // Log (server-side) when our server has started
+ 
   console.log("Server listening on: http://localhost:" + PORT);
 });
 
-const connection = mysql.createConnection({
+// mySQL database connection
+let connection = mysql.createConnection({
   host:  "localhost",
   user: "root",
   password:"password202",
