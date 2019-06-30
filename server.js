@@ -38,9 +38,16 @@ connection.connect(function(err){
   console.log("Connected to the database" +connection.threadId);
 })
 
-app.get("/", function(req, res){
+app.get("/", function(req, results){
   connection.query("SELECT * FROM burgers_db;", function(err, data){
-res.render('index',{movies:data});
+results.render('index',{movies: data});
   })
 
+});
+
+app.post("/create", function(req, results){
+  connection.query("INSERT INTO burgers_db (burger) VALUES (?);", function(err, data){
+   if(err) throw err;
+   res.redirect("/");
+  })
 })
