@@ -39,17 +39,17 @@ connection.connect(function(err){
 })
 
 app.get("/", function(req, res){
-  connection.query("SELECT * FROM burgers_db;", function(err, data){
+  connection.query("SELECT * FROM burgers;", function(err, data){
     if (err) {
       return res.status(500).end();
-    }  
-    res.json(data);
-  })
+    }
+
+    res.render("index", { burgers: data });  })
 
 });
 
-app.post("/create", function(req, results){
-  connection.query("INSERT INTO burgers_db (burger) VALUES (?);", function(err, data){
+app.post("/create", function(req, res){
+  connection.query("INSERT INTO burgers (burger) VALUES (?);",[req.body.burger], function(err, res){
    if(err) throw err;
    res.redirect("/");
   })
