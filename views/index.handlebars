@@ -1,18 +1,38 @@
-<h1>Burger List</h1>
-<ul>
-    {{#each burgers}}
-    <li>
-        <p>{{this.id}}.{{this.name}}</p>
-    </li>
-    {{/each}}
-</ul>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Eat da Burger!</h1>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
 
-<h1>Add Burger</h1>
-<form method="POST" action="/create">
-<textarea type="text" name="burger"></textarea>
-<button type="button" class="btn btn-primary" id="submit-button">Submit</button>
+            <h3>Burger List</h3>
+            <ul id="burger-list">
+                {{#each burgers}}
+                <li>
+                    <p>{{this.id}}.{{this.name}}</p>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
 
-</form>
-<ul>
+        <div class="col-sm">
+            <h3>Add a sandwhich</h3>
+            <form method="POST" action="/create">
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                    </div>
+                    <input type="text" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <button type="button" class="btn btn-primary" id="submit-button">Submit</button>
+            </form>
+        </div>
 
-</ul>
+        <div class="col-sm">
+
+        </div>
+
+    </div>
+</div>

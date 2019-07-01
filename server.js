@@ -38,9 +38,12 @@ connection.connect(function(err){
   console.log("Connected to the database" +connection.threadId);
 })
 
-app.get("/", function(req, results){
+app.get("/", function(req, res){
   connection.query("SELECT * FROM burgers_db;", function(err, data){
-results.render('index',{movies: data});
+    if (err) {
+      return res.status(500).end();
+    }  
+    res.json(data);
   })
 
 });
