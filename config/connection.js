@@ -1,8 +1,10 @@
 
 // Set up MySQL connection.
-var mysql = require("mysql");
+const mysql = require("mysql");
 
-var connection = mysql.createConnection({
+   
+
+let connection = mysql.createConnection({
   host: "localhost",
   port: 3000,
   user: "root",

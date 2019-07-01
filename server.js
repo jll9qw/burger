@@ -17,6 +17,10 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+// Import routes 
+const routes = require("./controllers/subs_controller.js");
+
+app.use(routes);
 
 
 // Start our server so that it can begin listening to client requests.
@@ -25,32 +29,37 @@ app.listen(PORT, function() {
   console.log("Server listening on: http://localhost:" + PORT);
 });
 
-// mySQL database connection
-let connection = mysql.createConnection({
-  host:  "localhost",
-  user: "root",
-  password:"password202",
-  database: "burgers_db"
-})
 
-connection.connect(function(err){
-  if (err) throw err;
-  console.log("Connected to the database" +connection.threadId);
-})
 
-app.get("/", function(req, res){
-  connection.query("SELECT * FROM burgers;", function(err, data){
-    if (err) {
-      return res.status(500).end();
-    }
+// app.get("/", function(req, res){
+//   connection.query("SELECT * FROM burgers;", function(err, data){
+//     if (err) {
+//       return res.status(500).end();
+//     }
 
-    res.render("index", { burgers: data });  })
+//     res.render("index", { burgers: data });  })
 
-});
+// });
 
-app.post("/create", function(req, res){
-  connection.query("INSERT INTO burgers (burger) VALUES (?);",[req.body.burger], function(err, res){
-   if(err) throw err;
-   res.redirect("/");
-  })
-})
+// app.post("/create", function(req, res){
+//   connection.query("INSERT INTO burgers (burger) VALUES (?);",[req.body.burger], function(err, result){
+//     if (err) {
+//       return res.status(500).end();
+//     }
+
+
+//    res,json(data); 
+//     res.redirect("/");
+//   })
+// })
+
+// // Retrieve all burgers
+// app.get("/burgers", function(req, res) {
+//   connection.query("SELECT * FROM burgers;", function(err, data) {
+//     if (err) {
+//       return res.status(500).end();
+//     }
+
+//     res.json(data);
+//   });
+// });

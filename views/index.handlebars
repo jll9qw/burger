@@ -19,14 +19,14 @@
 
         <div class="col-sm">
             <h3>Add a sandwhich</h3>
-            <form method="POST" action="/create">
+            <form id="add-burger">
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
                     </div>
-                    <input type="text" name="burger-input"class="form-control" aria-label="Sizing example input"
+                    <input type="text" id="burger-input" name="burger" class="form-control" aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-sm">
                 </div>
-                <button type="button" class="btn btn-primary" id="submit-button">Submit</button>
+                <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
             </form>
         </div>
 
@@ -36,3 +36,27 @@
 
     </div>
 </div>
+
+<script type="text/javascript">
+
+
+$("#add-burger").on("submit", function(event) {
+    event.preventDefault();
+
+    let newburger = {
+      burger: $("#add-burger[name=burger]").val
+    };
+ $.ajax("/create", {
+      type: "POST",
+      data: newburger
+    }).then(
+      function() {
+        console.log("added new burger");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+</script>
+  
