@@ -2,7 +2,6 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 // Set up MySQL connection.
-const mysql = require("mysql");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -18,7 +17,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes 
-const routes = require("./controllers/subs_controller.js");
+const routes = require("./controllers/burgers_controller.js");
 
 app.use(routes);
 
