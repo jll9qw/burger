@@ -5,7 +5,6 @@ var router = express.Router();
 // Import the model (burger.js) to use its database functions.
 var burger = require("../models/burger.js");
 
-
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
   console.log("/");
@@ -19,15 +18,15 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/burger", function(req, res) {
-  console.log("/api/burger");
   burger.create([
     "burger_name", "devoured"]
 , [
-    req.body.burger_name, req.body.devoured
+    req.body.burger_name,false
   ], function(result) {
     // Send back the ID of the new quote
-    res.json({ id: result.insertId });
-    res.redirect('/');
+
+   
+    res.redirect("/");
   });
 });
 
