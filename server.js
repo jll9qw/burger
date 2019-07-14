@@ -29,36 +29,3 @@ app.listen(PORT, function() {
 });
 
 
-
-// app.get("/", function(req, res){
-//   connection.query("SELECT * FROM burgers;", function(err, data){
-//     if (err) {
-//       return res.status(500).end();
-//     }
-
-//     res.render("index", { burgers: data });  })
-
-// });
-
-// app.post("/create", function(req, res){
-//   connection.query("INSERT INTO burgers (burger) VALUES (?);",[req.body.burger], function(err, result){
-//     if (err) {
-//       return res.status(500).end();
-//     }
-
-
-//    res,json(data); 
-//     res.redirect("/");
-//   })
-// })
-
-// // Retrieve all burgers
-// app.get("/burgers", function(req, res) {
-//   connection.query("SELECT * FROM burgers;", function(err, data) {
-//     if (err) {
-//       return res.status(500).end();
-//     }
-
-//     res.json(data);
-//   });
-// });

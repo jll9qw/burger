@@ -10,14 +10,11 @@ function printQuestionMarks(num) {
   return arr.toString();
 }
 
-// Helper function to convert object key/value pairs to SQL syntax
 function objToSql(ob) {
   var arr = [];
 
-  // loop through the keys and push the key/value as a string int arr
   for (var key in ob) {
     var value = ob[key];
-    // check to skip hidden properties
     if (Object.hasOwnProperty.call(ob, key)) {
       if (typeof value === "string" && value.indexOf(" ") >= 0) {
         value = "'" + value + "'";
@@ -31,6 +28,7 @@ function objToSql(ob) {
   return arr.toString();
 }
 
+// Object for all our SQL statement functions.
 var orm = {
   all: function(tableInput, cb) {
     var queryString = "SELECT * FROM " + tableInput + ";";
@@ -57,9 +55,11 @@ var orm = {
       if (err) {
         throw err;
       }
+
       cb(result);
     });
   },
+  // An example of objColVals would be {name: panther, sleepy: true}
   update: function(table, objColVals, condition, cb) {
     var queryString = "UPDATE " + table;
 
@@ -67,11 +67,13 @@ var orm = {
     queryString += objToSql(objColVals);
     queryString += " WHERE ";
     queryString += condition;
+
     console.log(queryString);
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }
+
       cb(result);
     });
   }
