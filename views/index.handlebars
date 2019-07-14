@@ -32,12 +32,12 @@
             </form>
         </div>
 
-        <div class="col-sm">
-            <div id="devoured-list">
+        <div class="col-sm" id="devoured-list">
+                <h3>Devoured list</h3>
                 <ul>
                     {{#each burgers}}
                     {{#if devoured}}
-                    {{> burgers/burger-block2}}
+                    {{> burgers/burger-block}}
                     {{/if}}
                     {{/each}}
                 </ul>

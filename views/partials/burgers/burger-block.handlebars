@@ -1,6 +1,8 @@
 <li>
 	{{burger_name}}
 
-		<button class="devour-burger" data-id="{{this.id}}"> devour!</button>
+		<button class="devour-burger" action="/update?_method=PUT"data-newdevoured="{{devoured}}">
+		{{#if devoured}}X{{else}}Devour!{{/if}}
+	</button>
 
 </li>
