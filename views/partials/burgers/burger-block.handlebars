@@ -1,8 +1,20 @@
 <li>
+	{{#if devoured}}
+	
+	{{id}}.
 	{{burger_name}}
 
-		<button class="devour-burger" action="/update?_method=PUT"data-newdevoured="{{devoured}}">
-		{{#if devoured}}X{{else}}Devour!{{/if}}
+	{{else}}
+
+	{{id}}.
+	{{burger_name}}
+
+	<button class="change-devour" data-id="{{id}}" data-newdevour="true">
+	
+		DEVOUR
 	</button>
+
+	{{/if}}
+
 
 </li>
