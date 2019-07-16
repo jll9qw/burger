@@ -8,42 +8,50 @@
         <div class="col-sm" id="burgers-list">
 
             <h3>Burger List</h3>
-            
-                 <ul>
+
+            <ul>
                 {{#each burgers}}
                 {{#unless devoured}}
-                {{> burgers/burger-block devoured=false}}
+                {{> burgers/burger-block devoured=true}}
+                {{!-- <form id="devour-button" method="" action="/api/burger" class="create-form">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                        </div>
+                        <input type="hidden" class=".burger_id" class="form-control">
+
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
+                </form>  --}}
                 {{/unless}}
                 {{/each}}
-               
+
             </ul>
         </div>
 
-        <div class="col-sm"  class="form-group">
+        <div class="col-sm" class="form-group">
             <h3>Add a sandwhich</h3>
-            <form id="add-burger" method= "POST" action="/api/burger" class="create-form">
-                <div class="input-group input-group-sm mb-3"  >
+            <form id="add-burger" method="POST" action="/api/burger" class="create-form">
+                <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
                     </div>
                     <input type="text" id="burger-input" name="burger_name" class="form-control"
                         aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                </div> 
+                </div>
                 <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
             </form>
         </div>
 
         <div class="col-sm" id="devoured-list">
-                <h3>Devoured list</h3>
-                <ul>
-                    {{#each burgers}}
-                    {{#if devoured}}
-                    {{> burgers/burger-block devoured=true}}
-                    {{/if}}
-                    {{/each}}
-                </ul>
-            </div>
+            <h3>Devoured list</h3>
+            <ul>
+                {{#each burgers}}
+                {{#if devoured}}
+{{> burgers/burger-block devoured=false}}
+                {{/if}}
+                {{/each}}
+            </ul>
         </div>
-
     </div>
-</div>
 
+</div>
+</div>
