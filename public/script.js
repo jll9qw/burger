@@ -1,5 +1,5 @@
 $(function() {
-  $(".change-devour").on("click", function(event) {
+  $().on("click", function(event) {
     var id = $(this).data("id");
     var newDevour = $(this).data("newdevour");
 
@@ -18,3 +18,6 @@ $(function() {
     });
   });
 });
+$(document).ready(function() {
+  
+  
